@@ -8,4 +8,6 @@
 #include "pokemondata.h"
 
 int main() {
+    PokemonData data("./data/pokemonRandomLarge.csv");
+    data.print();
 }

@@ -1,12 +1,11 @@
-I am using cmake to generate a GNU makefile, this should work on windows, but I am using linux
-
-Build:
+Run on linux with cmake and GNU make:
 ```shell
 > cmake .
 > make pokemonsort
+> ./pokemonsort(.exe)
 ```
 
-Run:
+You can also just feed all the cpp files to `g++` and be done with it. i.e.
 ```shell
-> ./pokemonsort(.exe)
+> g++ ./*.cpp && ./a.out && rm ./a.out
 ```

@@ -6,8 +6,25 @@
 #define ASSIGNMENT_1_POKEMONDATA_H
 
 
-class PokemonData {
+#include <string>
+#include <iostream>
+#include <fstream>
+#include <sstream>
+#include <utility>
+#include <stack>
+#include <cmath>
 
+#include "pokemondataitem.h"
+
+class PokemonData {
+public:
+    explicit PokemonData(std::string path);
+
+    void print();
+
+private:
+    size_t dataSize;
+    PokemonDataItem* data;
 };
 
 
