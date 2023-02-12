@@ -7,7 +7,7 @@
 
 #include "sorter.h"
 
-class MergeSorter {
+class MergeSorter : Sorter {
 
 };
 

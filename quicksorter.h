@@ -7,7 +7,7 @@
 
 #include "sorter.h"
 
-class QuickSorter {
+class QuickSorter : Sorter {
 
 };
 

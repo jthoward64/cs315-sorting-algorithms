@@ -6,8 +6,18 @@
 #define ASSIGNMENT_1_SORTER_H
 
 
-class sorter {
+#include "pokemondata.h"
 
+class Sorter {
+private:
+    PokemonData data;
+
+public:
+    explicit Sorter(PokemonData data);
+
+    virtual void sort() = 0;
+
+    const PokemonData &getData() const;
 };
 
 

@@ -7,7 +7,7 @@
 
 #include "sorter.h"
 
-class InsertionSorter {
+class InsertionSorter : Sorter {
 
 };
 
