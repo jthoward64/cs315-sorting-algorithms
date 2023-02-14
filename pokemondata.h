@@ -7,24 +7,36 @@
 
 
 #include <string>
+#include <vector>
 #include <iostream>
 #include <fstream>
 #include <sstream>
 #include <utility>
-#include <stack>
 #include <cmath>
 
 #include "pokemondataitem.h"
 
 class PokemonData {
 public:
-    explicit PokemonData(std::string path);
+    explicit PokemonData(const std::string& path);
 
-    void print();
+    explicit PokemonData(std::vector<PokemonDataItem> data);
+
+    void print() const;
+
+    bool operator==(const PokemonData &rhs) const;
+
+    bool operator!=(const PokemonData &rhs) const;
+
+    PokemonDataItem &operator[](size_t index);
+
+    [[nodiscard]] size_t size() const;
+    [[nodiscard]] std::vector<PokemonDataItem> * getDataPointer() const;
+
+    virtual ~PokemonData();
 
 private:
-    size_t dataSize;
-    PokemonDataItem* data;
+    std::vector<PokemonDataItem>* data;
 };
 
 

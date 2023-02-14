@@ -3,3 +3,7 @@
 //
 
 #include "quicksorter.h"
+
+void QuickSorter::sort() {
+
+}

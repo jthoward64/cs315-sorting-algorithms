@@ -9,15 +9,18 @@
 #include "pokemondata.h"
 
 class Sorter {
-private:
-    PokemonData data;
 
+protected:
+    PokemonData* data = nullptr;
 public:
-    explicit Sorter(PokemonData data);
+    explicit Sorter() = default;
 
     virtual void sort() = 0;
 
-    const PokemonData &getData() const;
+    virtual ~Sorter();
+
+    [[nodiscard]] PokemonData* getData() const;
+    void setData(PokemonData* newData);
 };
 
 

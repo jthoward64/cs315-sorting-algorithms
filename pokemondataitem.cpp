@@ -2,14 +2,23 @@
 // Created by Tagho on 2/12/2023.
 //
 
+#include <iostream>
 #include "pokemondataitem.h"
 
 bool PokemonDataItem::operator<(const PokemonDataItem &rhs) const {
-    return totalStats < rhs.totalStats;
+    if (this->totalStats == rhs.totalStats) {
+        return this->pokemonNumber < rhs.pokemonNumber;
+    } else {
+        return this->totalStats < rhs.totalStats;
+    }
 }
 
 bool PokemonDataItem::operator>(const PokemonDataItem &rhs) const {
-    return rhs < *this;
+    if (this->totalStats == rhs.totalStats) {
+        return this->pokemonNumber > rhs.pokemonNumber;
+    } else {
+        return this->totalStats > rhs.totalStats;
+    }
 }
 
 bool PokemonDataItem::operator<=(const PokemonDataItem &rhs) const {
@@ -17,17 +26,18 @@ bool PokemonDataItem::operator<=(const PokemonDataItem &rhs) const {
 }
 
 bool PokemonDataItem::operator>=(const PokemonDataItem &rhs) const {
-    return !(*this < rhs);
+    return !(rhs > *this);
 }
 
 bool PokemonDataItem::operator==(const PokemonDataItem &rhs) const {
-    return pokemonNumber == rhs.pokemonNumber &&
-           totalStats == rhs.totalStats;
+    return this->totalStats == rhs.totalStats && this->pokemonNumber == rhs.pokemonNumber;
 }
 
 bool PokemonDataItem::operator!=(const PokemonDataItem &rhs) const {
     return !(rhs == *this);
 }
 
-PokemonDataItem::PokemonDataItem(double pokemonNumber, int totalStats) : pokemonNumber(pokemonNumber),
-                                                                      totalStats(totalStats) {}
+PokemonDataItem::PokemonDataItem(double d, int i) {
+    this->pokemonNumber = d;
+    this->totalStats = i;
+}

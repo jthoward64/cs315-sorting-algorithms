@@ -7,8 +7,15 @@
 
 #include "sorter.h"
 
-class MergeSorter : Sorter {
+class MergeSorter : public Sorter {
+public:
+    explicit MergeSorter();
 
+    void sort() override;
+
+private:
+
+    static void sortRecurse(std::vector<PokemonDataItem>* data);
 };
 
 

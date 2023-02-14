@@ -8,11 +8,12 @@
 
 class PokemonDataItem {
 public:
+    PokemonDataItem(double d, int i);
+
     double pokemonNumber{};
     int totalStats{};
 
     explicit PokemonDataItem() = default;
-    explicit PokemonDataItem(double pokemonNumber, int totalStats);
 
     bool operator<(const PokemonDataItem &rhs) const;
 

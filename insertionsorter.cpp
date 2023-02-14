@@ -3,3 +3,8 @@
 //
 
 #include "insertionsorter.h"
+
+void InsertionSorter::sort() {
+
+}
+

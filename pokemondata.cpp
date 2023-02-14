@@ -3,9 +3,12 @@
 //
 
 #include <queue>
+#include <cstdio>
+#include <sstream>
+#include <utility>
 #include "pokemondata.h"
 
-PokemonData::PokemonData(std::string path) {
+PokemonData::PokemonData(const std::string& path) {
     std::ifstream dataFile (path);
 
     std::string dataFileLine;
@@ -19,47 +22,64 @@ PokemonData::PokemonData(std::string path) {
         dataFileLines.push(dataFileLine);
     }
 
-    this->dataSize = dataFileLines.size();
-    PokemonDataItem dataArray[this->dataSize];
+    this->data = new std::vector<PokemonDataItem>(dataFileLines.size());
 
     int i = 0;
     while(!dataFileLines.empty()) {
-        std::string line = dataFileLines.front();
+        std::istringstream iss(dataFileLines.front());
 
-        double pokemonNumber = 0;
-        int totalStats = 0;
+        double pokemonNumber;
+        char comma;
+        int totalStats;
 
-        bool wasComma = false;
-        int decimal = 0;
-        for (char letter : line) {
-            if (letter == ',') {
-                wasComma = true;
-                continue;
-            } else if (wasComma) {
-                totalStats *= 10;
-                totalStats += (letter - '0');
-            } else if (letter == '.') {
-                decimal++;
-                continue;
-            } else if (decimal > 0) {
-                pokemonNumber += (pow(0.1,decimal) * (letter - '0'));
-            } else {
-                pokemonNumber *= 10;
-                pokemonNumber += (letter - '0');
-            }
-        }
+        if (!(iss >> pokemonNumber >> comma >> totalStats)) { break; } // error
 
-        dataArray[i++] = PokemonDataItem(pokemonNumber, totalStats);
+        this->data->at(i++) = PokemonDataItem{pokemonNumber, totalStats};
 
         dataFileLines.pop();
     }
-
-    this->data = dataArray;
 }
 
-void PokemonData::print() {
-    for (int i = 0; i < this->dataSize; ++i) {
-        std::cout << this->data[i].pokemonNumber << ": " << this->data[i].totalStats << "\n";
+void PokemonData::print() const {
+    for (int i = 0; i < 10; ++i) {
+        std::cout << this->data->operator[](i).pokemonNumber << ": " << this->data->operator[](i).totalStats << "\n";
     }
-    std::cout << std::flush;
+    std::cout << std::endl;
+}
+
+bool PokemonData::operator==(const PokemonData &rhs) const {
+    if (this->size() != rhs.size()) {
+        return false;
+    } else {
+        for (int i = 0; i < this->size(); ++i) {
+            if (this->data->at(i) != rhs.data->at(i)) {
+                return false;
+            }
+        }
+        return true;
+    }
+}
+
+bool PokemonData::operator!=(const PokemonData &rhs) const {
+    return !(rhs == *this);
+}
+
+size_t PokemonData::size() const {
+    return this->data->size();
+}
+
+PokemonDataItem &PokemonData::operator[](size_t index) {
+    return this->data->operator[](index);
+}
+
+PokemonData::PokemonData(std::vector<PokemonDataItem> data) {
+    this->data = new std::vector<PokemonDataItem>(std::move(data));
+}
+
+std::vector<PokemonDataItem> * PokemonData::getDataPointer() const {
+    return this->data;
+}
+
+PokemonData::~PokemonData() {
+    delete this->data;
 }

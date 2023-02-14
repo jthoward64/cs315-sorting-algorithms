@@ -4,8 +4,14 @@
 
 #include "sorter.h"
 
-Sorter::Sorter(PokemonData data) : data(data) {}
-
-const PokemonData &Sorter::getData() const {
+PokemonData* Sorter::getData() const {
     return data;
+}
+
+Sorter::~Sorter() {
+    delete this->data;
+}
+
+void Sorter::setData(PokemonData *newData) {
+    this->data = newData;
 }

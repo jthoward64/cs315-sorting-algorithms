@@ -8,7 +8,7 @@
 #include "sorter.h"
 
 class QuickSorter : Sorter {
-
+    void sort() override;
 };
 
 

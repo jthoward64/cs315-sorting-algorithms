@@ -8,7 +8,7 @@
 #include "sorter.h"
 
 class InsertionSorter : Sorter {
-
+    void sort() override;
 };
 
 
