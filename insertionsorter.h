@@ -7,7 +7,8 @@
 
 #include "sorter.h"
 
-class InsertionSorter : Sorter {
+class InsertionSorter : public Sorter {
+public:
     void sort() override;
 };
 
