@@ -7,8 +7,13 @@
 
 #include "sorter.h"
 
-class QuickSorter : Sorter {
+class QuickSorter : public Sorter {
+public:
     void sort() override;
+
+private:
+    static void quickSort(std::vector<PokemonDataItem>* data, int startIndex, int endIndex);
+    static int partition(std::vector<PokemonDataItem>* data, int startIndex, int endIndex);
 };
 
 

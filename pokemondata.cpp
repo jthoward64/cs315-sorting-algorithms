@@ -41,7 +41,7 @@ PokemonData::PokemonData(const std::string& path) {
 }
 
 void PokemonData::print() const {
-    for (int i = 0; i < 10; ++i) {
+    for (int i = 0; i < this->size(); ++i) {
         std::cout << this->data->operator[](i).pokemonNumber << ": " << this->data->operator[](i).totalStats << "\n";
     }
     std::cout << std::endl;
