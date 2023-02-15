@@ -5,7 +5,10 @@
 #include <iostream>
 #include "pokemondataitem.h"
 
+int PokemonDataItem::comparisonsMade = 0;
+
 bool PokemonDataItem::operator<(const PokemonDataItem &rhs) const {
+    PokemonDataItem::comparisonsMade++;
     if (this->totalStats == rhs.totalStats) {
         return this->pokemonNumber < rhs.pokemonNumber;
     } else {
@@ -14,6 +17,7 @@ bool PokemonDataItem::operator<(const PokemonDataItem &rhs) const {
 }
 
 bool PokemonDataItem::operator>(const PokemonDataItem &rhs) const {
+    PokemonDataItem::comparisonsMade++;
     if (this->totalStats == rhs.totalStats) {
         return this->pokemonNumber > rhs.pokemonNumber;
     } else {

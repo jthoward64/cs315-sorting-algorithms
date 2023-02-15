@@ -8,6 +8,8 @@
 
 class PokemonDataItem {
 public:
+    static int comparisonsMade;
+
     PokemonDataItem(double d, int i);
 
     double pokemonNumber{};
