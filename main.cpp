@@ -21,7 +21,7 @@ template<typename T>
 void runSorting(T &sorter, PokemonData *dataForSorting, const std::string& adjective) {
     PokemonDataItem::comparisonsMade = 0;
     std::cout << "\u001b[36m";
-    std::cout << "\n\t\tRunning the " << adjective << " sorted data\n";
+    std::cout << "\t\tRunning the " << adjective << " sorted data\n";
     sorter.setData(dataForSorting);
     sorter.sort();
     std::cout << "\t\tMade " << PokemonDataItem::comparisonsMade << " comparisons\n";
@@ -55,24 +55,24 @@ void testSorter(T sorter, const std::string& pathSegment) {
 }
 
 void testAllSortersOnFile(const std::string& pathSegment) {
-    std::cout << "\u001b[34m" << "\tMerge sort:\n" << "\u001b[0m" << std::endl;
+    std::cout << "\u001b[34m" << "\tMerge sort:" << "\u001b[0m" << std::endl;
     MergeSorter mergeSorter;
     testSorter(mergeSorter, pathSegment);
 
-    std::cout << "\u001b[34m" << "\tQuick sort:\n" << "\u001b[0m" << std::endl;
+    std::cout << "\u001b[34m" << "\tQuick sort:" << "\u001b[0m" << std::endl;
     QuickSorter quickSorter;
     testSorter(quickSorter, pathSegment);
 
-    std::cout << "\u001b[34m" << "\tInsertion sort:\n" << "\u001b[0m" << std::endl;
+    std::cout << "\u001b[34m" << "\tInsertion sort:" << "\u001b[0m" << std::endl;
     InsertionSorter insertionSorter;
     testSorter(insertionSorter, pathSegment);
 }
 
 int main() {
-    std::cout << "\u001b[35m" << "Running the Small File:\n" << "\u001b[0m" << std::endl;
+    std::cout << "\u001b[35m" << "Running the Small File:" << "\u001b[0m" << std::endl;
     testAllSortersOnFile("Small");
-    std::cout << "\u001b[35m" << "Running the Medium File:\n" << "\u001b[0m" << std::endl;
+    std::cout << "\u001b[35m" << "Running the Medium File:" << "\u001b[0m" << std::endl;
     testAllSortersOnFile("Medium");
-    std::cout << "\u001b[35m" << "Running the Large File:\n" << "\u001b[0m" << std::endl;
+    std::cout << "\u001b[35m" << "Running the Large File:" << "\u001b[0m" << std::endl;
     testAllSortersOnFile("Large");
 }
