@@ -31,15 +31,20 @@ Just execute the binary produced by your compiler of choice, I've tested on Wind
 | Already Sorted | 579        | 13695      | 165       |
 | Reverse Sorted | 659        | 13695      | 13695     |
 | Unsorted       | 1030       | 1198       | 7037      | 
+
 $$166^2=27556$$
+
 $$166 \log 166 \approx 369$$
+
 ### Medium Dataset (432 Pokémon)
 |                | Merge Sort | Quick sort | Insertion Sort |
 | -------------- | ---------- | ---------- | --------- |
 | Already Sorted | 1824        | 93096      | 431       |
 | Reverse Sorted | 1984        | 93096      | 93096     |
 | Unsorted       | 3217       | 4424       | 47209      |
+
 $$432^2=186624$$
+
 $$432 \log 432 \approx 1138$$
 
 ### Large Dataset (800 Pokémon)
@@ -48,8 +53,11 @@ $$432 \log 432 \approx 1138$$
 | Already Sorted | 3728        | 319600      | 799       |
 | Reverse Sorted | 4048        | 319600      | 319600     |
 | Unsorted       | 6707       | 8990       | 164967      |
+
 $$800^2=640000$$
+
 $$800\log 800 \approx 2322$$
+
 ### Runtime Notes
 Insertion sort performed exactly as expected thanks to its clear cut best and worst case runtime. It's best case is $O(n)$ which is essentially what I saw in the already sorted data, and I likewise saw terrible performance in the reverse sorted data, with a runtime of about $O(\frac{1}{2}n^2)$, which can also be represented as $O(n^2)$, the standard worst case for insertion sort.
 For quick sort, in my implementation, the worst case is when the array is already sorted, in this case the runtime should be $O(n^2)$.  This is pretty much what I saw (same as for insertion sort) for every run. As far as best and average runtime goes, both are $n\log{n}$, I usually saw a comparison count of about four times $O(nlogn)$.
