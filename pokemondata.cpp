@@ -11,6 +11,11 @@
 PokemonData::PokemonData(const std::string& path) {
     std::ifstream dataFile (path);
 
+    if(!dataFile.is_open()) {
+        std::cerr << "Maybe failed to open data file, check the path" << std::endl;
+        return;
+    }
+
     std::string dataFileLine;
 
     // Advance past the header

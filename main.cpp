@@ -27,9 +27,10 @@ void runSorting(T &sorter, PokemonData *dataForSorting, const std::string& adjec
     std::cout << "\t\tMade " << PokemonDataItem::comparisonsMade << " comparisons\n";
 }
 
+std::string pathToDataDir{"../data/"};
 std::string makePathToCsv(const std::string& pathSortSegment, const std::string& pathSizeSegment) {
-    std::string basePath = std::string{"../data/pokemon"};
-    return basePath + pathSortSegment + pathSizeSegment + ".csv";
+    std::string basePath{pathToDataDir};
+    return basePath + "pokemon" + pathSortSegment + pathSizeSegment + ".csv";
 }
 
 template <typename T>
@@ -68,7 +69,12 @@ void testAllSortersOnFile(const std::string& pathSegment) {
     testSorter(insertionSorter, pathSegment);
 }
 
-int main() {
+int main(int argc, char** argv) {
+    if(argc == 2) {
+        std::cout << argv[1] << std::endl;
+        pathToDataDir = argv[1];
+    }
+
     std::cout << "\u001b[35m" << "Running the Small File:" << "\u001b[0m" << std::endl;
     testAllSortersOnFile("Small");
     std::cout << "\u001b[35m" << "Running the Medium File:" << "\u001b[0m" << std::endl;
